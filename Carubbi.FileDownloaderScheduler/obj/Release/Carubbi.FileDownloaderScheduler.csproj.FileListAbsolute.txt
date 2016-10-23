@@ -1,0 +1,13 @@
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.exe.config
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.exe
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.pdb
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.Configuration.dll
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.PluginInterfaces.dll
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.Configuration.pdb
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.PluginInterfaces.pdb
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\obj\Release\Carubbi.FileDownloaderScheduler.csprojResolveAssemblyReference.cache
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\obj\Release\Itau.FileDownloaderScheduler.exe
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\obj\Release\Itau.FileDownloaderScheduler.pdb
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Carubbi.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.exe.config
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Carubbi.FileDownloaderScheduler\obj\Release\Itau.FileDownloaderScheduler.exe
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Carubbi.FileDownloaderScheduler\obj\Release\Itau.FileDownloaderScheduler.pdb

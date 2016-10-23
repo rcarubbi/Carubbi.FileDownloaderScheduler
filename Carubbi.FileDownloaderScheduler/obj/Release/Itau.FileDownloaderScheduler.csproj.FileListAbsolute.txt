@@ -1,0 +1,13 @@
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.exe.config
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.exe
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.pdb
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.Configuration.dll
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.PluginInterfaces.dll
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.Configuration.pdb
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.PluginInterfaces.pdb
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\obj\Release\ResolveAssemblyReference.cache
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\obj\Release\Itau.FileDownloaderScheduler.exe
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\obj\Release\Itau.FileDownloaderScheduler.pdb
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\bin\Release\Itau.FileDownloaderScheduler.exe.config
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\obj\Release\Itau.FileDownloaderScheduler.exe
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler\obj\Release\Itau.FileDownloaderScheduler.pdb

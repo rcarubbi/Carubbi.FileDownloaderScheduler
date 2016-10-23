@@ -1,0 +1,8 @@
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\bin\Release\Itau.FileDownloaderScheduler.PluginACLXls.dll
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\bin\Release\Itau.FileDownloaderScheduler.PluginACLXls.pdb
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\bin\Release\Interop.Excel.dll
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\bin\Release\Itau.FileDownloaderScheduler.PluginInterfaces.dll
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\bin\Release\Itau.FileDownloaderScheduler.PluginInterfaces.pdb
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\obj\Release\Carubbi.FileDownloaderScheduler.PluginACLXls.csprojResolveAssemblyReference.cache
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\obj\Release\Itau.FileDownloaderScheduler.PluginACLXls.dll
+C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\obj\Release\Itau.FileDownloaderScheduler.PluginACLXls.pdb

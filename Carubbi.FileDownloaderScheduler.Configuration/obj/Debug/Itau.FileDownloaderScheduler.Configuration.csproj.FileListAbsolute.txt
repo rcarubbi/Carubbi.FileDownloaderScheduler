@@ -1,0 +1,5 @@
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.Configuration\bin\Debug\Itau.FileDownloaderScheduler.Configuration.dll
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.Configuration\bin\Debug\Itau.FileDownloaderScheduler.Configuration.pdb
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.Configuration\obj\Debug\ResolveAssemblyReference.cache
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.Configuration\obj\Debug\Itau.FileDownloaderScheduler.Configuration.dll
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.Configuration\obj\Debug\Itau.FileDownloaderScheduler.Configuration.pdb

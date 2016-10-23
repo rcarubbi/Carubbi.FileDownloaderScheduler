@@ -1,0 +1,8 @@
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\bin\Release\Itau.FileDownloaderScheduler.PluginZip.dll
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\bin\Release\Itau.FileDownloaderScheduler.PluginZip.pdb
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\bin\Release\Itau.FileDownloaderScheduler.PluginInterfaces.dll
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\bin\Release\Itau.FileDownloaderScheduler.PluginInterfaces.pdb
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\obj\Release\ResolveAssemblyReference.cache
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\obj\Release\Itau.FileDownloaderScheduler.PluginZip.dll
+C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\obj\Release\Itau.FileDownloaderScheduler.PluginZip.pdb

@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carubbi.FileDownloaderScheduler", "Carubbi.FileDownloaderScheduler\Carubbi.FileDownloaderScheduler.csproj", "{9408FEDF-A958-4809-8164-91A927DF9C59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carubbi.FileDownloaderScheduler.PluginZip", "Carubbi.FileDownloaderScheduler.PluginZip\Carubbi.FileDownloaderScheduler.PluginZip.csproj", "{F4738782-3589-46BC-8697-7F38955ABF9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carubbi.FileDownloaderScheduler.PluginInterfaces", "Carubbi.FileDownloaderScheduler.PluginInterfaces\Carubbi.FileDownloaderScheduler.PluginInterfaces.csproj", "{1E82DA68-13D9-4520-BEE3-B672883A9472}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carubbi.FileDownloaderScheduler.Configuration", "Carubbi.FileDownloaderScheduler.Configuration\Carubbi.FileDownloaderScheduler.Configuration.csproj", "{F9BBD797-7B66-4562-B447-80BC227E9765}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carubbi.FileDownloaderScheduler.PluginXlsHtm", "Carubbi.FileDownloaderScheduler.PluginXlsHtm\Carubbi.FileDownloaderScheduler.PluginXlsHtm.csproj", "{9FE31071-5A5D-4E95-AE61-F54C9F124989}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carubbi.FileDownloaderScheduler.PluginACLXls", "Carubbi.FileDownloaderScheduler.PluginACLXls\Carubbi.FileDownloaderScheduler.PluginACLXls.csproj", "{A5E9C089-9D23-4A65-A8E5-8D46EE0F2D41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5EBE6084-ED47-4CCF-AD12-10736FDF3356}"
+	ProjectSection(SolutionItems) = preProject
+		macro.txt = macro.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9408FEDF-A958-4809-8164-91A927DF9C59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9408FEDF-A958-4809-8164-91A927DF9C59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9408FEDF-A958-4809-8164-91A927DF9C59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9408FEDF-A958-4809-8164-91A927DF9C59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4738782-3589-46BC-8697-7F38955ABF9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4738782-3589-46BC-8697-7F38955ABF9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4738782-3589-46BC-8697-7F38955ABF9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4738782-3589-46BC-8697-7F38955ABF9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E82DA68-13D9-4520-BEE3-B672883A9472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E82DA68-13D9-4520-BEE3-B672883A9472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E82DA68-13D9-4520-BEE3-B672883A9472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E82DA68-13D9-4520-BEE3-B672883A9472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9BBD797-7B66-4562-B447-80BC227E9765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9BBD797-7B66-4562-B447-80BC227E9765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9BBD797-7B66-4562-B447-80BC227E9765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9BBD797-7B66-4562-B447-80BC227E9765}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FE31071-5A5D-4E95-AE61-F54C9F124989}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FE31071-5A5D-4E95-AE61-F54C9F124989}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FE31071-5A5D-4E95-AE61-F54C9F124989}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FE31071-5A5D-4E95-AE61-F54C9F124989}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5E9C089-9D23-4A65-A8E5-8D46EE0F2D41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5E9C089-9D23-4A65-A8E5-8D46EE0F2D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5E9C089-9D23-4A65-A8E5-8D46EE0F2D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5E9C089-9D23-4A65-A8E5-8D46EE0F2D41}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

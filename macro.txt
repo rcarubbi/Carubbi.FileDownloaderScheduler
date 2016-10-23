@@ -1,0 +1,86 @@
+Private Sub Workbook_Open()
+
+    calcula Me.Sheets(1)
+
+End Sub
+
+Private Sub Workbook_SheetCalculate(ByVal Sh As Object)
+    calcula Sh
+End Sub
+
+Private Function ConvertToNumber(ByVal mes As String) As String
+
+    Select Case LCase(mes)
+        Case "jan"
+            ConvertToNumber = "01"
+        Case "fev"
+            ConvertToNumber = "02"
+        Case "mar"
+            ConvertToNumber = "03"
+        Case "abr"
+            ConvertToNumber = "04"
+        Case "mai"
+            ConvertToNumber = "05"
+        Case "jun"
+            ConvertToNumber = "06"
+        Case "jul"
+            ConvertToNumber = "07"
+        Case "ago"
+            ConvertToNumber = "08"
+        Case "set"
+            ConvertToNumber = "09"
+        Case "out"
+            ConvertToNumber = "10"
+        Case "nov"
+            ConvertToNumber = "11"
+        Case "dez"
+            ConvertToNumber = "12"
+    End Select
+    
+    
+    
+    
+
+End Function
+
+Private Sub calcula(ByVal Sh As Object)
+
+   On Error Resume Next
+  
+   Dim sheet As Worksheet
+   Set sheet = Sh
+   
+   Set fso = CreateObject("Scripting.FileSystemObject")
+   
+   Dim tipoPlanilha
+   tipoPlanilha = Cells(2, 17)
+   
+   Dim data, mes, ano
+   data = Cells(2, 14)
+   
+   
+   mes = Mid(data, 1, 3)
+   ano = Mid(data, 5, 2)
+   
+   mes = ConvertToNumber(mes)
+      
+   If fso.FileExists("C:\FileDownloaderScheduler\bin\Release\temp\" & sheet.Name & "_" & mes & "_" & ano & " (" & tipoPlanilha & ")" & ".htm") Then
+    fso.DeleteFile "C:\FileDownloaderScheduler\bin\Release\temp\" & sheet.Name & "_" & mes & "_" & ano & " (" & tipoPlanilha & ")" & ".htm"
+   End If
+
+   Dim NewBook As Workbook
+   Set NewBook = Workbooks.Add()
+ 
+   sheet.Copy before:=NewBook.Worksheets("plan1")
+   Application.DisplayAlerts = False
+     
+   NewBook.Worksheets(4).Delete
+   NewBook.Worksheets(3).Delete
+   NewBook.Worksheets(2).Delete
+ 
+   NewBook.SaveAs Filename:="C:\FileDownloaderScheduler\bin\Release\temp\" & sheet.Name & "_" & mes & "_" & ano & " (" & tipoPlanilha & ")" & ".htm", FileFormat:=xlHtml
+ 
+   NewBook.Close
+   Application.DisplayAlerts = True
+   
+End Sub
