@@ -8,8 +8,8 @@
     <ProjectGuid>{A5E9C089-9D23-4A65-A8E5-8D46EE0F2D41}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Itau.FileDownloaderScheduler.PluginACLXls</RootNamespace>
-    <AssemblyName>Itau.FileDownloaderScheduler.PluginACLXls</AssemblyName>
+    <RootNamespace>Carubbi.FileDownloaderScheduler.PluginACLXls</RootNamespace>
+    <AssemblyName>Carubbi.FileDownloaderScheduler.PluginACLXls</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>

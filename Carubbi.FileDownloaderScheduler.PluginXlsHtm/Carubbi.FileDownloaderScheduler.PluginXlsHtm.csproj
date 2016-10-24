@@ -8,8 +8,8 @@
     <ProjectGuid>{9FE31071-5A5D-4E95-AE61-F54C9F124989}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Itau.FileDownloaderScheduler.PluginXlsHtm</RootNamespace>
-    <AssemblyName>Itau.FileDownloaderScheduler.PluginXlsHtm</AssemblyName>
+    <RootNamespace>Carubbi.FileDownloaderScheduler.PluginXlsHtm</RootNamespace>
+    <AssemblyName>Carubbi.FileDownloaderScheduler.PluginXlsHtm</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>

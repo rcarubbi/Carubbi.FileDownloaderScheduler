@@ -1,3 +1,0 @@
-C:\Users\Raphael\Source\Repos\Carubbi.FileDownloaderScheduler\Carubbi.FileDownloaderScheduler\bin\Debug\Itau.FileDownloaderScheduler.exe.config
-C:\Users\Raphael\Source\Repos\Carubbi.FileDownloaderScheduler\Carubbi.FileDownloaderScheduler\obj\Debug\Itau.FileDownloaderScheduler.exe
-C:\Users\Raphael\Source\Repos\Carubbi.FileDownloaderScheduler\Carubbi.FileDownloaderScheduler\obj\Debug\Itau.FileDownloaderScheduler.pdb

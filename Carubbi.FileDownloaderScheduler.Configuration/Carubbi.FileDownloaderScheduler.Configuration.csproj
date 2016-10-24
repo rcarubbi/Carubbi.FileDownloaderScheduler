@@ -8,8 +8,8 @@
     <ProjectGuid>{F9BBD797-7B66-4562-B447-80BC227E9765}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Itau.FileDownloaderScheduler.Configuration</RootNamespace>
-    <AssemblyName>Itau.FileDownloaderScheduler.Configuration</AssemblyName>
+    <RootNamespace>Carubbi.FileDownloaderScheduler.Configuration</RootNamespace>
+    <AssemblyName>Carubbi.FileDownloaderScheduler.Configuration</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>

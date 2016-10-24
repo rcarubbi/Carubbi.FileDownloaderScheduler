@@ -8,8 +8,8 @@
     <ProjectGuid>{1E82DA68-13D9-4520-BEE3-B672883A9472}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Itau.FileDownloaderScheduler.PluginInterfaces</RootNamespace>
-    <AssemblyName>Itau.FileDownloaderScheduler.PluginInterfaces</AssemblyName>
+    <RootNamespace>Carubbi.FileDownloaderScheduler.PluginInterfaces</RootNamespace>
+    <AssemblyName>Carubbi.FileDownloaderScheduler.PluginInterfaces</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
