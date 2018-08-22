@@ -2,20 +2,17 @@
 
 namespace Carubbi.FileDownloaderScheduler.Configuration
 {
-
     public class UrlSourceCollection : ConfigurationElementCollection
     {
         protected override ConfigurationElement CreateNewElement()
         {
             return new UrlSourceElement();
         }
-        
-        
+
+
         protected override object GetElementKey(ConfigurationElement element)
         {
-            return ((UrlSourceElement)element).Path;
+            return ((UrlSourceElement) element).Path;
         }
     }
 }
-
-

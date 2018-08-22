@@ -7,8 +7,8 @@ namespace Carubbi.FileDownloaderScheduler.Configuration
         [ConfigurationProperty("", IsRequired = true, IsDefaultCollection = true)]
         public UrlSourceCollection Instances
         {
-            get { return (UrlSourceCollection)this[""]; }
-            set { this[""] = value; }
+            get => (UrlSourceCollection) this[""];
+            set => this[""] = value;
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Carubbi.FileDownloaderScheduler.Configuration;
-using Carubbi.FileDownloaderScheduler.PluginInterfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
@@ -9,6 +7,9 @@ using System.Net;
 using System.Reflection;
 using System.Threading;
 using System.Timers;
+using Carubbi.FileDownloaderScheduler.Configuration;
+using Carubbi.FileDownloaderScheduler.PluginInterfaces;
+using Timer = System.Timers.Timer;
 
 namespace Carubbi.FileDownloaderScheduler
 {
@@ -17,7 +18,7 @@ namespace Carubbi.FileDownloaderScheduler
         private static StringCollection _paths;
         private static int _minutesCycle;
         private static string _targetPath;
-        private static System.Timers.Timer _timer;
+        private static Timer _timer;
         private static List<IFileDownloaderSchedulerPlugin> _plugins;
         private static string _prefixFileName;
         private static string _sufixFileName;
@@ -27,15 +28,15 @@ namespace Carubbi.FileDownloaderScheduler
         {
             try
             {
-                _prefixFileName = ConfigurationSettings.AppSettings["prefixFileName"].ToString();
-                _sufixFileName = ConfigurationSettings.AppSettings["sufixFileName"].ToString();
-                _isOnline = Convert.ToBoolean(ConfigurationSettings.AppSettings["isOnline"].ToString());
+                _prefixFileName = ConfigurationSettings.AppSettings["prefixFileName"];
+                _sufixFileName = ConfigurationSettings.AppSettings["sufixFileName"];
+                _isOnline = Convert.ToBoolean(ConfigurationSettings.AppSettings["isOnline"]);
 
                 Console.WriteLine("{0} - Lendo configurações", DateTime.Now);
                 Console.WriteLine("1.) Urls a monitorar", DateTime.Now);
                 _paths = UrlSourcesConfig.Paths;
-                int urlsCount = 0;
-                foreach (string path in _paths)
+                var urlsCount = 0;
+                foreach (var path in _paths)
                     Console.WriteLine("- Url {0}: {1} ", ++urlsCount, path);
 
                 _minutesCycle = Convert.ToInt32(ConfigurationSettings.AppSettings["minutesCycle"]);
@@ -50,42 +51,40 @@ namespace Carubbi.FileDownloaderScheduler
             }
         }
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("{0} - File Downloader Scheduler iniciado", DateTime.Now);
 
             ReadConfigs();
             if (_isOnline)
             {
-                _timer = new System.Timers.Timer(10000);// * 10000 * 6);
+                _timer = new Timer(10000); // * 10000 * 6);
                 _plugins = LoadPlugins();
-                _timer.Elapsed += new ElapsedEventHandler(_timer_Elapsed);
+                _timer.Elapsed += _timer_Elapsed;
                 _timer.Start();
 
 
                 while (true)
                     Thread.Sleep(100000);
             }
-            else
-            {
-                _plugins = LoadPlugins();
-                _timer_Elapsed(null, null);
-            }
+
+            _plugins = LoadPlugins();
+            _timer_Elapsed(null, null);
         }
 
-        public static List<KeyValuePair<string, Stream>> ExecuteDownloads(out List<KeyValuePair<string, Exception>> erros)
+        public static List<KeyValuePair<string, Stream>> ExecuteDownloads(
+            out List<KeyValuePair<string, Exception>> erros)
         {
             erros = new List<KeyValuePair<string, Exception>>();
-            List<KeyValuePair<string, Stream>> arquivos = new List<KeyValuePair<string, Stream>>();
-            foreach (string path in _paths)
-            {
+            var arquivos = new List<KeyValuePair<string, Stream>>();
+            foreach (var path in _paths)
                 try
                 {
-                    WebRequest request = HttpWebRequest.Create(path);
+                    var request = WebRequest.Create(path);
                     if (request is HttpWebRequest)
                         request.UseDefaultCredentials = true;
-                    WebResponse response = request.GetResponse();
-                    Stream fileContent = response.GetResponseStream();
+                    var response = request.GetResponse();
+                    var fileContent = response.GetResponseStream();
                     arquivos.Add(new KeyValuePair<string, Stream>(path, fileContent));
                     Console.WriteLine("{0} - Download efetuado de {1}", DateTime.Now, path);
                 }
@@ -93,15 +92,15 @@ namespace Carubbi.FileDownloaderScheduler
                 {
                     erros.Add(new KeyValuePair<string, Exception>("Erro ao tentar realizar download", ex));
                 }
-            }
+
             return arquivos;
         }
 
-        static void _timer_Elapsed(object sender, ElapsedEventArgs e)
+        private static void _timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             Console.WriteLine("------------------------------------------------------------");
             Console.WriteLine("{0} - Ciclo de execução iniciado", DateTime.Now);
-           
+
             if (_isOnline)
                 _timer.Stop();
 
@@ -112,49 +111,41 @@ namespace Carubbi.FileDownloaderScheduler
             ProcessarPlugins(ref arquivos, erros);
             GravarSaidas(ref arquivos, erros);
 
-            foreach (KeyValuePair<string, Exception> erro in erros)
-            {
-                Console.WriteLine(String.Concat(erro.Key, ":", erro.Value.Message));
-            }
+            foreach (var erro in erros) Console.WriteLine(string.Concat(erro.Key, ":", erro.Value.Message));
 
             if (_isOnline)
                 _timer.Start();
         }
 
-        private static void ProcessarPlugins(ref List<KeyValuePair<string, Stream>> arquivos, List<KeyValuePair<string, Exception>> erros)
+        private static void ProcessarPlugins(ref List<KeyValuePair<string, Stream>> arquivos,
+            List<KeyValuePair<string, Exception>> erros)
         {
             try
             {
-                List<KeyValuePair<string, Stream>> arquivosProcessados = new List<KeyValuePair<string, Stream>>();
-                List<KeyValuePair<string, Stream>> arquivosOutput = new List<KeyValuePair<string, Stream>>();
+                var arquivosProcessados = new List<KeyValuePair<string, Stream>>();
+                var arquivosOutput = new List<KeyValuePair<string, Stream>>();
 
                 if (_plugins.Count > 0)
                 {
-
-                    foreach (KeyValuePair<string, Stream> arquivo in arquivos)
+                    foreach (var arquivo in arquivos)
                     {
                         Console.WriteLine("Arquivo {0}: {1} plugins a processar...", arquivo.Key, _plugins.Count);
 
-                       
-                        foreach (IFileDownloaderSchedulerPlugin plugin in _plugins)
+
+                        foreach (var plugin in _plugins)
                         {
                             Console.WriteLine("Executando plugin {0}", plugin.Name);
                             arquivosOutput = plugin.Process(arquivo);
                         }
 
                         if (arquivosOutput != null && arquivosOutput.Count > 0)
-                        {
                             arquivosProcessados.AddRange(arquivosOutput);
-                        }
                         else
-                        {
                             arquivosProcessados.Add(arquivo);
-                        }
                     }
+
                     arquivos = arquivosProcessados;
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -164,36 +155,33 @@ namespace Carubbi.FileDownloaderScheduler
 
         private static List<IFileDownloaderSchedulerPlugin> LoadPlugins()
         {
-            List<IFileDownloaderSchedulerPlugin> plugins = new List<IFileDownloaderSchedulerPlugin>();
-            string pluginsDirectory = string.Concat(Environment.CurrentDirectory, @"\plugins\");
-            string[] pluginFileNames = Directory.GetFiles(pluginsDirectory);
+            var plugins = new List<IFileDownloaderSchedulerPlugin>();
+            var pluginsDirectory = string.Concat(Environment.CurrentDirectory, @"\plugins\");
+            var pluginFileNames = Directory.GetFiles(pluginsDirectory);
 
             try
             {
-                foreach (string pluginFileName in pluginFileNames)
+                foreach (var pluginFileName in pluginFileNames)
                 {
-                    string path = Path.Combine(pluginsDirectory, pluginFileName);
-                    Assembly plugin = Assembly.LoadFrom(path);
+                    var path = Path.Combine(pluginsDirectory, pluginFileName);
+                    var plugin = Assembly.LoadFrom(path);
                     Type[] types = null;
                     try
                     {
-                        types = plugin.GetTypes();   
-                        foreach (Type t in types)
+                        types = plugin.GetTypes();
+                        foreach (var t in types)
                         {
-                            Type[] interfaceTypes = t.GetInterfaces();
-                            foreach (Type interfaceType in interfaceTypes)
-                            {
+                            var interfaceTypes = t.GetInterfaces();
+                            foreach (var interfaceType in interfaceTypes)
                                 if (interfaceType == typeof(IFileDownloaderSchedulerPlugin))
                                 {
-                                    IFileDownloaderSchedulerPlugin pluginObject = (IFileDownloaderSchedulerPlugin)Activator.CreateInstance(t);
+                                    var pluginObject = (IFileDownloaderSchedulerPlugin) Activator.CreateInstance(t);
                                     plugins.Add(pluginObject);
                                 }
-                            }
                         }
                     }
                     catch (ReflectionTypeLoadException ex)
                     {
-                       
                     }
                 }
             }
@@ -206,26 +194,26 @@ namespace Carubbi.FileDownloaderScheduler
         }
 
 
-        private static void GravarSaidas(ref List<KeyValuePair<string, Stream>> arquivos, List<KeyValuePair<string, Exception>> erros)
+        private static void GravarSaidas(ref List<KeyValuePair<string, Stream>> arquivos,
+            List<KeyValuePair<string, Exception>> erros)
         {
-            foreach (KeyValuePair<string, Stream> arquivo in arquivos)
-            {
+            foreach (var arquivo in arquivos)
                 try
                 {
-                    string path =  string.Empty;
-                    string fileName = string.Empty;
+                    var path = string.Empty;
+                    var fileName = string.Empty;
                     if (arquivo.Key.Contains(Environment.CurrentDirectory))
                         path = arquivo.Key.Remove(0, Environment.CurrentDirectory.Length + 1);
                     else
                         path = arquivo.Key;
 
-                        fileName = string.Format("{0}{1}{2}{3}", ResolvePatternFileName(_prefixFileName),
-                            Path.Combine(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path)),
-                            ResolvePatternFileName(_sufixFileName),
-                            Path.GetExtension(path));
-                   
+                    fileName = string.Format("{0}{1}{2}{3}", ResolvePatternFileName(_prefixFileName),
+                        Path.Combine(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path)),
+                        ResolvePatternFileName(_sufixFileName),
+                        Path.GetExtension(path));
 
-                    string target = string.Concat(_targetPath, fileName);
+
+                    var target = string.Concat(_targetPath, fileName);
                     if (!Directory.Exists(Path.GetDirectoryName(target)))
                         Directory.CreateDirectory(Path.GetDirectoryName(target));
 
@@ -233,34 +221,33 @@ namespace Carubbi.FileDownloaderScheduler
                     {
                         CopyStream(arquivo.Value, file);
                     }
-                    
+
                     arquivo.Value.Close();
                     arquivo.Value.Dispose();
-                    
-                    Console.WriteLine("{0} - Arquivo Gravado em {1}", DateTime.Now, string.Concat(_targetPath, fileName));
+
+                    Console.WriteLine("{0} - Arquivo Gravado em {1}", DateTime.Now,
+                        string.Concat(_targetPath, fileName));
                 }
                 catch (Exception ex)
                 {
                     erros.Add(new KeyValuePair<string, Exception>("Erro ao tentar Gravar arquivo(s) de saida", ex));
                 }
-            }
 
             arquivos.Clear();
         }
 
         public static void CopyStream(Stream input, Stream output)
         {
-            byte[] buffer = new byte[8 * 1024];
+            var buffer = new byte[8 * 1024];
             int len;
-            while ((len = input.Read(buffer, 0, buffer.Length)) > 0)
-            {
-                output.Write(buffer, 0, len);
-            }
+            while ((len = input.Read(buffer, 0, buffer.Length)) > 0) output.Write(buffer, 0, len);
         }
 
         public static string ResolvePatternFileName(string pattern)
         {
-            return pattern.Replace("[YEAR]", DateTime.Today.ToString("yyyy")).Replace("[MONTH]", DateTime.Today.ToString("MM")).Replace("[DAY]",DateTime.Today.ToString("dd")).Replace("[TIME]", DateTime.Now.ToString("HHmmss"));
+            return pattern.Replace("[YEAR]", DateTime.Today.ToString("yyyy"))
+                .Replace("[MONTH]", DateTime.Today.ToString("MM")).Replace("[DAY]", DateTime.Today.ToString("dd"))
+                .Replace("[TIME]", DateTime.Now.ToString("HHmmss"));
         }
     }
 }

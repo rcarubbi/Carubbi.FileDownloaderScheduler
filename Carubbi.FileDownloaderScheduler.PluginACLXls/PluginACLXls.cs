@@ -1,11 +1,11 @@
-﻿using Carubbi.FileDownloaderScheduler.PluginInterfaces;
-using Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Carubbi.FileDownloaderScheduler.PluginInterfaces;
+using Excel;
 
 namespace Carubbi.FileDownloaderScheduler.PluginACLXls
 {
@@ -15,57 +15,58 @@ namespace Carubbi.FileDownloaderScheduler.PluginACLXls
 
         public PluginACLXls()
         {
-            Name = "Plugin do ACL"; 
+            Name = "Plugin do ACL";
         }
 
-        private String[] _arrCells = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "W", "Y", "Z", "AA", "AB", "AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "AS", "AT", "AU", "AV", "AX", "AW", "AY", "AZ" };
-        private object _objMissing = Missing.Value;
+        private readonly string[] _arrCells =
+        {
+            "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
+            "V", "X", "W", "Y", "Z", "AA", "AB", "AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN",
+            "AO", "AP", "AQ", "AR", "AS", "AT", "AU", "AV", "AX", "AW", "AY", "AZ"
+        };
+
+        private readonly object _objMissing = Missing.Value;
         private Workbook _objWorkBook;
         private Worksheet _objWorkSheet;
         private ApplicationClass _objExcelApp;
-        private string _excelPath = ConfigurationManager.AppSettings["excelPath"].ToString();
+        private string _excelPath = ConfigurationManager.AppSettings["excelPath"];
 
         public static void CopyStream(Stream input, Stream output)
         {
             input.Position = 0;
-            byte[] buffer = new byte[8 * 1024];
+            var buffer = new byte[8 * 1024];
             int len;
-            while ((len = input.Read(buffer, 0, buffer.Length)) > 0)
-            {
-                output.Write(buffer, 0, len);
-            }
+            while ((len = input.Read(buffer, 0, buffer.Length)) > 0) output.Write(buffer, 0, len);
         }
 
-        public List<KeyValuePair<string, System.IO.Stream>> Process(KeyValuePair<string, System.IO.Stream> input)
+        public List<KeyValuePair<string, Stream>> Process(KeyValuePair<string, Stream> input)
         {
             if (input.Key.ToLower().EndsWith(".xls"))
             {
-                string tempDirectory = Path.Combine(Environment.CurrentDirectory, "temp");
+                var tempDirectory = Path.Combine(Environment.CurrentDirectory, "temp");
 
-                if (Directory.Exists(tempDirectory))
-                {
-                    Directory.Delete(tempDirectory, true);
-                }
+                if (Directory.Exists(tempDirectory)) Directory.Delete(tempDirectory, true);
                 Directory.CreateDirectory(tempDirectory);
 
-                string fullpath = Path.Combine(tempDirectory, Path.GetFileName(input.Key));
-                FileStream fs = new FileStream(fullpath, FileMode.Create);
+                var fullpath = Path.Combine(tempDirectory, Path.GetFileName(input.Key));
+                var fs = new FileStream(fullpath, FileMode.Create);
                 CopyStream(input.Value, fs);
                 fs.Close();
 
-                object[,] dados = LerConteudo(fullpath);
-                string xlsPath = Path.Combine(ConfigurationManager.AppSettings["xlsPath"], Path.GetFileName(input.Key));
+                var dados = LerConteudo(fullpath);
+                var xlsPath = Path.Combine(ConfigurationManager.AppSettings["xlsPath"], Path.GetFileName(input.Key));
                 GravarConteudo(xlsPath, dados);
 
                 FileStream fsOutput = null;
                 fsOutput = File.OpenRead(xlsPath);
 
 
-                List<KeyValuePair<string, Stream>> retorno = new List<KeyValuePair<string, Stream>>();
-                retorno.Add(new KeyValuePair<String, Stream>(Path.GetFileName(xlsPath), fsOutput));
+                var retorno = new List<KeyValuePair<string, Stream>>();
+                retorno.Add(new KeyValuePair<string, Stream>(Path.GetFileName(xlsPath), fsOutput));
 
                 return retorno;
             }
+
             return null;
         }
 
@@ -75,27 +76,22 @@ namespace Carubbi.FileDownloaderScheduler.PluginACLXls
             {
                 _objExcelApp = new ApplicationClass();
                 _objWorkBook = _objExcelApp.Workbooks.Open(xlsPath, _objMissing, _objMissing, _objMissing, _objMissing,
-                    _objMissing, _objMissing, _objMissing, _objMissing, _objMissing, _objMissing, _objMissing, _objMissing,
+                    _objMissing, _objMissing, _objMissing, _objMissing, _objMissing, _objMissing, _objMissing,
+                    _objMissing,
                     _objMissing, _objMissing);
 
 
-                _objWorkSheet = (Worksheet)_objWorkBook.Worksheets[2];
+                _objWorkSheet = (Worksheet) _objWorkBook.Worksheets[2];
 
-                for (int i = 1; i <= dados.GetLength(0); i++)
-                {
-                    for (int j = 1; j <= dados.GetLength(1); j++)
-                    {
-                        ((Range)_objWorkSheet.Cells[i, _arrCells[j - 1]]).Value2 = dados[i, j];
-                    }
-                }
+                for (var i = 1; i <= dados.GetLength(0); i++)
+                for (var j = 1; j <= dados.GetLength(1); j++)
+                    ((Range) _objWorkSheet.Cells[i, _arrCells[j - 1]]).Value2 = dados[i, j];
 
-                _objWorkSheet = (Worksheet)_objWorkBook.Worksheets[1];
-                ((PivotTable)_objWorkSheet.PivotTables(1)).RefreshTable();
+                _objWorkSheet = (Worksheet) _objWorkBook.Worksheets[1];
+                ((PivotTable) _objWorkSheet.PivotTables(1)).RefreshTable();
 
                 _objWorkBook.Save();
                 _objWorkBook.Close(false, xlsPath, _objMissing);
-
-               
             }
             finally
             {
@@ -114,22 +110,21 @@ namespace Carubbi.FileDownloaderScheduler.PluginACLXls
             Range range = null;
             try
             {
-
                 _objExcelApp = new ApplicationClass();
                 _objWorkBook = _objExcelApp.Workbooks.Open(fullpath, _objMissing, _objMissing, _objMissing, _objMissing,
-                    _objMissing, _objMissing, _objMissing, _objMissing, _objMissing, _objMissing, _objMissing, _objMissing,
+                    _objMissing, _objMissing, _objMissing, _objMissing, _objMissing, _objMissing, _objMissing,
+                    _objMissing,
                     _objMissing, _objMissing);
 
-                _objWorkSheet = (Worksheet)_objWorkBook.Worksheets[1];
+                _objWorkSheet = (Worksheet) _objWorkBook.Worksheets[1];
 
-               
 
                 range = _objWorkSheet.get_Range("A1", Missing.Value);
                 range = range.get_End(XlDirection.xlToRight);
                 range = range.get_End(XlDirection.xlDown);
-                string downAddress = range.get_Address(false, false, XlReferenceStyle.xlA1, Type.Missing, Type.Missing);
+                var downAddress = range.get_Address(false, false, XlReferenceStyle.xlA1, Type.Missing, Type.Missing);
                 range = _objWorkSheet.get_Range("A1", downAddress);
-                object[,] values = (object[,])range.Value2;
+                var values = (object[,]) range.Value2;
 
                 _objWorkBook.Close(false, fullpath, _objMissing);
 
@@ -149,11 +144,7 @@ namespace Carubbi.FileDownloaderScheduler.PluginACLXls
             }
         }
 
-        public string Name
-        {
-            get;
-            private set;
-        }
+        public string Name { get; }
 
         #endregion
     }
