@@ -1,8 +1,0 @@
-C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\bin\Release\Itau.FileDownloaderScheduler.PluginACLXls.dll
-C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\bin\Release\Itau.FileDownloaderScheduler.PluginACLXls.pdb
-C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\bin\Release\Interop.Excel.dll
-C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\bin\Release\Itau.FileDownloaderScheduler.PluginInterfaces.dll
-C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\bin\Release\Itau.FileDownloaderScheduler.PluginInterfaces.pdb
-C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\obj\Release\ResolveAssemblyReference.cache
-C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\obj\Release\Itau.FileDownloaderScheduler.PluginACLXls.dll
-C:\ClearCase_Storage\snapshot\OM5_vn_Desenv2\OM5_vob\Componentes\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginACLXls\obj\Release\Itau.FileDownloaderScheduler.PluginACLXls.pdb

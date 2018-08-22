@@ -1,8 +1,0 @@
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\bin\Release\Itau.FileDownloaderScheduler.PluginZip.dll
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\bin\Release\Itau.FileDownloaderScheduler.PluginZip.pdb
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\bin\Release\ICSharpCode.SharpZipLib.dll
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\bin\Release\Itau.FileDownloaderScheduler.PluginInterfaces.dll
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\bin\Release\Itau.FileDownloaderScheduler.PluginInterfaces.pdb
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\obj\Release\Carubbi.FileDownloaderScheduler.PluginZip.csprojResolveAssemblyReference.cache
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\obj\Release\Itau.FileDownloaderScheduler.PluginZip.dll
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginZip\obj\Release\Itau.FileDownloaderScheduler.PluginZip.pdb

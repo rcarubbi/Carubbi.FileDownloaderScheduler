@@ -1,8 +1,0 @@
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginXlsHtm\bin\Release\Itau.FileDownloaderScheduler.PluginXlsHtm.dll
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginXlsHtm\bin\Release\Itau.FileDownloaderScheduler.PluginXlsHtm.pdb
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginXlsHtm\bin\Release\Interop.Excel.dll
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginXlsHtm\bin\Release\Itau.FileDownloaderScheduler.PluginInterfaces.dll
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginXlsHtm\bin\Release\Itau.FileDownloaderScheduler.PluginInterfaces.pdb
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginXlsHtm\obj\Release\Carubbi.FileDownloaderScheduler.PluginXlsHtm.csprojResolveAssemblyReference.cache
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginXlsHtm\obj\Release\Itau.FileDownloaderScheduler.PluginXlsHtm.dll
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.PluginXlsHtm\obj\Release\Itau.FileDownloaderScheduler.PluginXlsHtm.pdb

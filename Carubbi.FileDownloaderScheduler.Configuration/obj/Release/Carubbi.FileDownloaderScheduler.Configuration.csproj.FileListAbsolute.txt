@@ -1,5 +1,0 @@
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.Configuration\bin\Release\Itau.FileDownloaderScheduler.Configuration.dll
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.Configuration\bin\Release\Itau.FileDownloaderScheduler.Configuration.pdb
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.Configuration\obj\Release\Carubbi.FileDownloaderScheduler.Configuration.csprojResolveAssemblyReference.cache
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.Configuration\obj\Release\Itau.FileDownloaderScheduler.Configuration.dll
-C:\Users\Raphael\Google Drive\FileDownloaderScheduler\Itau.FileDownloaderScheduler\Itau.FileDownloaderScheduler.Configuration\obj\Release\Itau.FileDownloaderScheduler.Configuration.pdb
