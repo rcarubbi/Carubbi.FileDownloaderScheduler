@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Carubbi.FileDownloaderScheduler.PluginInterfaces;
+using Excel;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Carubbi.FileDownloaderScheduler.PluginInterfaces;
-using Excel;
 
 namespace Carubbi.FileDownloaderScheduler.PluginXlsHtm
 {
@@ -29,10 +30,8 @@ namespace Carubbi.FileDownloaderScheduler.PluginXlsHtm
 
         public string GetHtmlPath(string caminho)
         {
-            string htmlPath = string.Empty, tipoXls = string.Empty, mes = string.Empty, ano = string.Empty;
-
-            var caminhoTemporario = Path.Combine(Path.GetDirectoryName(caminho),
-                string.Format("tmp{0}.{1}", Path.GetFileNameWithoutExtension(caminho), Path.GetExtension(caminho)));
+            var caminhoTemporario = Path.Combine(Path.GetDirectoryName(caminho) ?? throw new InvalidOperationException(),
+                $"tmp{Path.GetFileNameWithoutExtension(caminho)}.{Path.GetExtension(caminho)}");
             File.Copy(caminho, caminhoTemporario);
 
             _objExcelApp = new ApplicationClass();
@@ -46,9 +45,9 @@ namespace Carubbi.FileDownloaderScheduler.PluginXlsHtm
             var rangeTipoRelatorio = (Range) _objWorkSheet.Cells[2, _arrCells[16]];
 
             var data = rangeData.Value2.ToString();
-            mes = ConvertToMonthNumber(data.Substring(0, 3));
-            ano = data.Substring(4, 2);
-            tipoXls = rangeTipoRelatorio.Value2.ToString();
+            var mes = ConvertToMonthNumber(data.Substring(0, 3));
+            var ano = data.Substring(4, 2);
+            var tipoXls = rangeTipoRelatorio.Value2.ToString();
 
             _objWorkBook.Close(false, caminhoTemporario, _objMissing);
 
@@ -65,14 +64,13 @@ namespace Carubbi.FileDownloaderScheduler.PluginXlsHtm
 
             File.Delete(caminhoTemporario);
 
-            htmlPath = Path.Combine(Path.GetDirectoryName(caminho),
-                string.Format("{0}_{1}_{2} ({3}).{4}", Path.GetFileNameWithoutExtension(caminho), mes, ano, tipoXls,
-                    "htm"));
+            var htmlPath = Path.Combine(Path.GetDirectoryName(caminho) ?? throw new InvalidOperationException(),
+                $"{Path.GetFileNameWithoutExtension(caminho)}_{mes}_{ano} ({tipoXls}).htm");
 
             return htmlPath;
         }
 
-        private string ConvertToMonthNumber(string monthName)
+        private static string ConvertToMonthNumber(string monthName)
         {
             switch (monthName.ToLower())
             {
@@ -111,71 +109,60 @@ namespace Carubbi.FileDownloaderScheduler.PluginXlsHtm
         }
 
         private readonly string _excelPath = ConfigurationManager.AppSettings["excelPath"];
-
-        public static void CopyStream(Stream input, Stream output)
-        {
-            input.Position = 0;
-            var buffer = new byte[8 * 1024];
-            int len;
-            while ((len = input.Read(buffer, 0, buffer.Length)) > 0) output.Write(buffer, 0, len);
-        }
+ 
 
         public List<KeyValuePair<string, Stream>> Process(KeyValuePair<string, Stream> input)
         {
-            if (input.Key.EndsWith(".xlsm"))
+            if (!input.Key.EndsWith(".xlsm")) return null;
+            var tempDirectory = Path.Combine(Environment.CurrentDirectory, "temp");
+
+            Directory.Delete(tempDirectory, true);
+            Directory.CreateDirectory(tempDirectory);
+
+            var fullpath = Path.Combine(tempDirectory, Path.GetFileName(input.Key));
+
+            var retorno = new List<KeyValuePair<string, Stream>>();
+            var fs = new FileStream(fullpath, FileMode.Create);
+
+            input.Value.CopyTo(fs);
+            fs.Close();
+
+            var proc = new Process
             {
-                var tempDirectory = Path.Combine(Environment.CurrentDirectory, "temp");
-
-                Directory.Delete(tempDirectory, true);
-                Directory.CreateDirectory(tempDirectory);
-
-                var fullpath = Path.Combine(tempDirectory, Path.GetFileName(input.Key));
-
-                var retorno = new List<KeyValuePair<string, Stream>>();
-                var fs = new FileStream(fullpath, FileMode.Create);
-
-                CopyStream(input.Value, fs);
-                fs.Close();
-
-                var proc = new Process();
-                proc.StartInfo.CreateNoWindow = true;
-                proc.StartInfo.UseShellExecute = false;
-                proc.StartInfo.RedirectStandardError = true;
-                proc.StartInfo.RedirectStandardOutput = true;
-                proc.StartInfo.FileName = Path.Combine(_excelPath, "excel.exe");
-                proc.StartInfo.Arguments = "\"" + fullpath + "\"";
-                proc.Start();
-                Thread.Sleep(Convert.ToInt32(ConfigurationManager.AppSettings["secondsWaitProcess"]) * 1000);
-                if (!proc.HasExited)
-                    proc.Kill();
-
-                if (proc.StandardError.ReadToEnd().Length > 0)
-                    return null;
-                var folderFullPath = string.Empty;
-                var htmlFullPath = string.Empty;
-                FileStream fsHtml = null;
-
-
-                htmlFullPath = GetHtmlPath(fullpath);
-
-                fsHtml = File.OpenRead(htmlFullPath);
-
-                retorno.Add(new KeyValuePair<string, Stream>(htmlFullPath, fsHtml));
-                folderFullPath = Path.Combine(Path.GetDirectoryName(htmlFullPath),
-                    string.Concat(Path.GetFileNameWithoutExtension(htmlFullPath), "_arquivos"));
-
-                var files = Directory.GetFiles(folderFullPath);
-                foreach (var file in files)
+                StartInfo =
                 {
-                    var fsFile = File.OpenRead(file);
-                    retorno.Add(new KeyValuePair<string, Stream>(file, fsFile));
+                    CreateNoWindow = true,
+                    UseShellExecute = false,
+                    RedirectStandardError = true,
+                    RedirectStandardOutput = true,
+                    FileName = Path.Combine(_excelPath, "excel.exe"),
+                    Arguments = "\"" + fullpath + "\""
                 }
+            };
+            proc.Start();
+
+            Thread.Sleep(Convert.ToInt32(ConfigurationManager.AppSettings["secondsWaitProcess"]) * 1000);
+            if (!proc.HasExited)
+                proc.Kill();
+
+            if (proc.StandardError.ReadToEnd().Length > 0)
+                return null;
 
 
-                return retorno;
-            }
+            var htmlFullPath = GetHtmlPath(fullpath);
 
-            return null;
+            var fsHtml = File.OpenRead(htmlFullPath);
+
+            retorno.Add(new KeyValuePair<string, Stream>(htmlFullPath, fsHtml));
+            var folderFullPath = Path.Combine(Path.GetDirectoryName(htmlFullPath) ?? throw new InvalidOperationException(),
+                string.Concat(Path.GetFileNameWithoutExtension(htmlFullPath), "_arquivos"));
+
+            var files = Directory.GetFiles(folderFullPath);
+            retorno.AddRange(from file in files let fsFile = File.OpenRead(file) select new KeyValuePair<string, Stream>(file, fsFile));
+
+
+            return retorno;
+
         }
 
         public string Name { get; }

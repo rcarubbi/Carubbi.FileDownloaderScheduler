@@ -18,36 +18,31 @@ namespace Carubbi.FileDownloaderScheduler.PluginZip
 
         public List<KeyValuePair<string, Stream>> Process(KeyValuePair<string, Stream> input)
         {
-            if (input.Key.EndsWith(".zip"))
+            if (!input.Key.EndsWith(".zip")) return null;
+            var retorno = new List<KeyValuePair<string, Stream>>();
+            using (var s = new ZipInputStream(input.Value))
             {
-                var retorno = new List<KeyValuePair<string, Stream>>();
-                using (var s = new ZipInputStream(input.Value))
+                ZipEntry theEntry;
+
+                while ((theEntry = s.GetNextEntry()) != null)
                 {
-                    ZipEntry theEntry;
-
-                    while ((theEntry = s.GetNextEntry()) != null)
+                    var ms = new MemoryStream();
+                    var data = new byte[2048];
+                    while (true)
                     {
-                        var ms = new MemoryStream();
-                        var size = 2048;
-                        var data = new byte[2048];
-                        while (true)
-                        {
-                            size = s.Read(data, 0, data.Length);
-                            if (size > 0)
-                                ms.Write(data, 0, size);
-                            else
-                                break;
-                        }
-
-                        ms.Position = 0;
-                        retorno.Add(new KeyValuePair<string, Stream>(theEntry.Name, ms));
+                        var size = s.Read(data, 0, data.Length);
+                        if (size > 0)
+                            ms.Write(data, 0, size);
+                        else
+                            break;
                     }
-                }
 
-                return retorno;
+                    ms.Position = 0;
+                    retorno.Add(new KeyValuePair<string, Stream>(theEntry.Name, ms));
+                }
             }
 
-            return null;
+            return retorno;
         }
 
         #endregion
